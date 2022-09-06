@@ -9,16 +9,15 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c 
+ * @brief This file contains functions that compute the statistics of a data in an array.
  *
- * <Add Extended Description Here>
+ * There are functions to calculate the mean, median, max and min of the array. Also there are functions to sort and print the array.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Caleb Adewole
+ * @date 30/07/2022
  *
  */
-
 
 
 #include <stdio.h>
@@ -41,3 +40,32 @@ void main() {
 }
 
 /* Add other Implementation File Code Here */
+
+void print_statistics(unsigned char *arrayPtr, unsigned int length){
+
+}
+
+void print_array(unsigned char *arrayPtr, unsigned int length){
+
+
+}
+
+unsigned char find_median(unsigned char *arrayPtr, unsigned int length){
+
+}
+
+unsigned char find_mean(unsigned char *arrayPtr, unsigned int length){
+
+}
+
+unsigned char find_maximum(unsigned char *arrayPtr, unsigned int length){
+
+}
+
+unsigned char find_minimum(unsigned char *arrayPtr, unsigned int length){
+
+}
+
+void sort_array(unsigned char *arrayPtr, unsigned int length){
+
+}

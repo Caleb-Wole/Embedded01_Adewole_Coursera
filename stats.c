@@ -34,38 +34,103 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
+   /* Other Variable Declarations Go Here */
+  unsigned char *testPtr = test;
+  unsigned int arrlength = SIZE;
 
+  /* Statistics and Printing Functions Go Here */
+  print_array(testPtr, arrlength);
+  print_statistics(testPtr, arrlength);
 }
 
 /* Add other Implementation File Code Here */
 
 void print_statistics(unsigned char *arrayPtr, unsigned int length){
+	printf("The min value is %u.\n", find_minimum(arrayPtr, length));
+	printf("The max value is %u.\n", find_maximum(arrayPtr, length));
+	printf("Mean value is %u.\n",find_mean(arrayPtr, length));
+	printf("Median value is %u.\n", find_median(arrayPtr, length));
 
 }
 
 void print_array(unsigned char *arrayPtr, unsigned int length){
+	int i;
 
+	printf("The indexes of the numbers"
+			" in the array with the"
+		       " numbers themselves are"
+		       " as follows: \n");
+	for (i=0; i<length; i++){
+		printf("%i: ", i+1);
+		printf("%i \n", *arrayPtr);
+		arrayPtr++;
+	}
 
 }
 
 unsigned char find_median(unsigned char *arrayPtr, unsigned int length){
+	sort_array(arrayPtr, length);
+
+	int sumOfMiddleValues;
+	unsigned char medianValue;
+	sumOfMiddleValues = *(arrayPtr + length/2) + *(arrayPtr + (length/2 - 1));
+	medianValue = sumOfMiddleValues/2;
+
+	return medianValue;
+
 
 }
 
 unsigned char find_mean(unsigned char *arrayPtr, unsigned int length){
+	int i;
+	unsigned char meanValue;
+	int elementSum = 0;
+	
+	for (i=0; i<length; ++i){
+		elementSum += *arrayPtr;
+		arrayPtr++;
+	}
+	meanValue = elementSum / length;
+	return meanValue;
+
 
 }
 
 unsigned char find_maximum(unsigned char *arrayPtr, unsigned int length){
+	unsigned char maxValue = *arrayPtr;
+
+	for (int i=0; i<length; ++i){
+		if (*(arrayPtr+i) > maxValue){
+			maxValue = *(arrayPtr+i);
+		}
+	}
+	return maxValue;
 
 }
 
 unsigned char find_minimum(unsigned char *arrayPtr, unsigned int length){
+	unsigned char minValue = *arrayPtr;
 
+	for (int i=0; i<length; ++i){
+		if (*(arrayPtr+i) < minValue){
+			minValue = *(arrayPtr+i);
+		}
+	}
+	return minValue;
 }
 
 void sort_array(unsigned char *arrayPtr, unsigned int length){
+	unsigned int i,j,temp;
+	for (i=0; i<length; ++i){
+		for (j=i+1; j<length; ++j){
+			if (*(arrayPtr+i) < *(arrayPtr+j)){
+				temp = *(arrayPtr+i);
+				*(arrayPtr+i) = *(arrayPtr+j);
+				*(arrayPtr+j) = temp;
+			}
+		}
+	}
 
 }
+
+
